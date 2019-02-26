@@ -89,16 +89,16 @@ def generate_features(stances,dataset,name):
     #distance_feature = generate_distances(h, b, model)
     #head_vectors = generate_headline_features(h,b,model)
     #body_vectors = generate_body_features(h,b,model)
-    #X_body_vectors = do_PCA(X_body_vectors, n_components=2)
-    #X_head_vectors = do_PCA(X_head_vectors,n_components=2)
+    #X_body_vectors = do_PCA(body_vectors, n_components=2)
+    #X_head_vectors = do_PCA(headline_vectors,n_components=2)
     #difference = generate_difference(X_body_vectors, X_head_vectors)
-    clf_LDA = LinearDiscriminantAnalysis(n_components=2)
-    headline_vectors = clf_LDA.fit_transform(headline_vectors,y)
-    body_vectors = clf_LDA.fit_transform(body_vectors,y)
-    baseline_vectors = clf_LDA.fit_transform(np.c_[X_overlap, X_refuting, X_polarity, X_hand], y)
-    semantic_vectors = clf_LDA.fit_transform(np.c_[headline_vectors,body_vectors], y)
-    #X = np.c_[X_hand, X_polarity, X_refuting, X_overlap, headline_vectors, body_vectors, distance_feature]
-    X = np.c_[baseline_vectors, headline_vectors, semantic_vectors, distance_feature]
+    #clf_LDA = LinearDiscriminantAnalysis(n_components=2)
+    #headline_vectors = clf_LDA.fit_transform(headline_vectors,y)
+    #body_vectors = clf_LDA.fit_transform(body_vectors,y)
+    #baseline_vectors = clf_LDA.fit_transform(np.c_[X_overlap, X_refuting, X_polarity, X_hand], y)
+    #semantic_vectors = clf_LDA.fit_transform(np.c_[headline_vectors,body_vectors], y)
+    X = np.c_[X_hand, X_polarity, X_refuting, X_overlap, headline_vectors, body_vectors, distance_feature]
+    #X = np.c_[baseline_vectors, headline_vectors, semantic_vectors, distance_feature]
     # encode class values as integers
     #X, y = SMOTE().fit_resample(X, y)
     return X,y
@@ -237,7 +237,7 @@ if __name__ == "__main__":
         #clf= Pipeline([
          #   ('clf', OneVsRestClassifier(MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15, 10), random_state=14128)))])
         #clf = ANN_classifier(X_train, y_train)
-        clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15, 10), random_state=14128)
+        clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(10, 5), random_state=14128)
         #clf = LinearDiscriminantAnalysis()
         #mlp = MLPClassifier(max_iter= 100)
         #clf = GridSearchCV(mlp, parameter_space, n_jobs=-1, cv=3)
