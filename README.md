@@ -1,5 +1,6 @@
 # Fake_News_Challange
-to run and evaluate the model type 'python fnc_kfold_our_model.py' in console
+<b>To run</b> </br>
+to run and evaluate the model type <b>'python fnc_kfold_our_model.py'</b> in console
 
   
 to run and evaluate the baseline model run 'python fnc_kfold_their.py' in console after commenting out the classification section using
