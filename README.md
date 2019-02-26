@@ -1,7 +1,7 @@
 # Fake_News_Challange
 <b>To run</b> </br>
 to run and evaluate the model type <b>'python fnc_kfold_our_model.py'</b> in console
-
+This model is still under construction in order to achieve more boost in accuracy
   
 to run and evaluate the baseline model run 'python fnc_kfold_their.py' in console after commenting out the classification section using
 the other classifiers (Since we have included more classifiers on the baseline).
